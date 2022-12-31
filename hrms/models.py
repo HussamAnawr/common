@@ -37,10 +37,42 @@ class Employee(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
 
 class Address(models.Model):
     pass
 
 
-class Attendance (models.Model):
+class Attendance(models.Model):
     pass
+
+
+class Vacation(models.Model):
+    REGULAR = 'RG'
+    SICK = 'SK'
+    MOTHERHOOD = 'MH'
+    MATERNITY = 'MT'
+    MARRIAGE = 'MG'
+    DEATH = 'DT'
+    EXAMS = 'EX'
+    NEW_BORN = 'NB'
+    TYPES = [
+        (REGULAR, 'Regular Vacation'),
+        (SICK, 'Sick Leave'),
+        (MOTHERHOOD, 'Motherhood Vacation'),
+        (MATERNITY, 'Maternity Leave'),
+        (MARRIAGE, 'Marriage Leave'),
+        (DEATH, 'Death Leave'),
+        (EXAMS, 'Exams Leave'),
+        (NEW_BORN, 'New Born Leave')
+    ]
+    type = models.CharField(max_length=2, choices=TYPES, default=REGULAR)
+    start_date = models.DateField()
+    period = models.IntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    employee = models.ForeignKey(
+        'Employee', on_delete=models.CASCADE, related_name='vacations')
