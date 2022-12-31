@@ -16,7 +16,7 @@ class Job(models.Model):
         ('JR', 'Junior'),
         ('GR', 'Graduate')
     ]
-    reference_number = models.IntegerField
+    reference_number = models.IntegerField(default=0)
     title = models.CharField(max_length=255)
     schedule = models.CharField(max_length=2, choices=SCHEDULES, default='FT')
     level = models.CharField(max_length=2, choices=LEVELS, default='GR')
@@ -42,6 +42,9 @@ class Job(models.Model):
 
 
 class Section(models.Model):
+    """
+    @ NEVER TO FORGET TO ADD A ROOT SECTION
+    """
     TYPES = [
         ('DI', 'Directory'),
         ('MA', 'Management'),
