@@ -13,9 +13,7 @@ class UserAdmin(BaseUserAdmin):
             "fields": (
                 'name',
                 'email',
-                'national_id',
-                'phone_number',
-                'date_of_birth',
+
             ),
         }),
         (_('Permission'), {
@@ -37,9 +35,6 @@ class UserAdmin(BaseUserAdmin):
                 'password1',
                 'password2',
                 'name',
-                'national_id',
-                'phone_number',
-                'date_of_birth',
                 'is_active',
                 'is_staff',
                 'is_superuser',

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'od.apps.OdConfig',
+    'hrms.apps.HrmsConfig'
 ]
 
 MIDDLEWARE = [
